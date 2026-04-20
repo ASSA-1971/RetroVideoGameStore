@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Payment</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Order Total</h3>
+        <h4>@String.Format("{0:c}", ViewBag.Total)</h4>
+
+        <div class="mt-4">
+            <h5>Pay with Card (Stripe)</h5>
+            <form action="/Shop/ProcessPayment" method="POST">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-primary">Proceed to Stripe Checkout</button>
+            </form>
+        </div>
+
+        <div class="mt-3">
+            <p class="text-muted">--- or for demo purposes ---</p>
+            <a href="/Shop/SaveOrder" class="btn btn-success">Complete Demo Purchase</a>
+        </div>
+    </div>
+</div>
