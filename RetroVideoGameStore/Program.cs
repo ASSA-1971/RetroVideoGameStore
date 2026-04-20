@@ -22,18 +22,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 // Adding Google OAuth
-builder.Services.AddAuthentication()
-    .AddGoogle(options =>
-    {
-        options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
-        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
-    })
-    .AddGitHub(options =>
-    {
-        options.ClientId = builder.Configuration["GitHub:ClientId"]!;
-        options.ClientSecret = builder.Configuration["GitHub:ClientSecret"]!;
-    });
-
+// External OAuth disabled for demo / Codespaces
+builder.Services.AddAuthentication();
 
 
 var app = builder.Build();
